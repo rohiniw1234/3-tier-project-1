@@ -1,3 +1,5 @@
+
+   
 version: 0.2
 
 phases:
@@ -17,11 +19,14 @@ phases:
       - echo Building frontend...
       - cd ../../application-code/web-tier
       - npm run build
+      - echo Copying nginx.conf into build directory...
+      - cp nginx.conf build/nginx.conf
       - echo Build complete.
 
 artifacts:
   files:
     - appspec.yml
     - scripts/*
-    - application-code/web-tier/build//*
-    - application-code/backend-tier//*
+    - application-code/web-tier/build/**/*       
+    - application-code/backend-tier/**/*         
+    - application-code/web-tier/build/nginx.conf 
