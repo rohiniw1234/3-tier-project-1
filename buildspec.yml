@@ -8,6 +8,10 @@ phases:
       - echo Installing frontend dependencies...
       - cd application-code/web-tier
       - npm install
+      - echo Build complete.- echo "==> Building Docker image (React + Nginx)..."
+      - docker build -t web-frontend-nginx:latest .
+
+      
       - cd ../../application-code/backend-tier
       - echo Installing backend dependencies...
       - npm install
@@ -17,11 +21,6 @@ phases:
       - echo Building frontend...
       - cd ../../application-code/web-tier
       - npm run build
-      - echo Build complete.
+     
+      
 
-artifacts:
-  files:
-    - appspec.yml
-    - scripts/*
-    - application-code/web-tier/build//*
-    - application-code/backend-tier//*
